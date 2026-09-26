@@ -583,6 +583,88 @@ a {
     align-self: start;
 }
 
+/* ---------- Bild 11–13 + Text 6 / 6.1 (Projekt „Sichtbar“) ---------- */
+/* links: Bild 11, darunter Text 6, darunter Bild 13 (am Rand)
+   rechts: Bild 12 (Hochformat), darunter Text 6.1 – leicht nach links versetzt */
+.sichtbar {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    row-gap: 72px;
+    padding: 0 0 160px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.sichtbar__img11 {
+    grid-column: 2 / 8;
+    grid-row: 1;
+    align-self: start;
+}
+
+.sichtbar__img12 {
+    grid-column: 9 / 12;
+    grid-row: 1 / 3;
+    align-self: start;
+    margin-top: clamp(120px, 16vw, 300px);   /* tiefer, teilweise neben Text 6 */
+}
+
+.sichtbar__text6 {
+    grid-column: 2 / 8;
+    grid-row: 2;
+    align-self: start;
+    padding-right: 40px;
+}
+
+.sichtbar__img13 {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    align-self: start;
+}
+
+.sichtbar__text61 {
+    grid-column: 7 / 12;
+    grid-row: 3;
+    align-self: start;
+}
+
+.sichtbar p {
+    margin: 0 0 1em;
+}
+
+.sichtbar__title {
+    margin-bottom: 0.3em;
+}
+
+/* zweite Überschrift: kleiner und nicht fett */
+.sichtbar__subtitle {
+    margin: 0 0 1.4em;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.isbn {
+    margin: 1.6em 0 0;
+    padding-top: 1em;
+    border-top: 1px solid var(--color-line);
+    font-size: 13px;
+}
+
+.isbn div {
+    display: flex;
+    gap: 16px;
+}
+
+.isbn dt {
+    min-width: 9em;
+    color: var(--color-muted);
+}
+
+.isbn dd {
+    margin: 0;
+}
+
 /* ---------- Unterseite about ---------- */
 .page {
     padding: 96px 10% 160px;
@@ -748,6 +830,41 @@ button.cta {
     color: inherit;
     border-radius: 0;
     cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 28px var(--gutter);
+    border-top: 1px solid var(--color-line);
+    font-size: 13px;
+}
+
+.site-footer__copy {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.site-footer__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.site-footer__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+    color: var(--color-accent);
 }
 
 /* ---------- Vorhang mit Logo-Animation ---------- */
@@ -1043,6 +1160,32 @@ html.is-loading {
 
     .branding__wide {
         margin-top: 0;
+    }
+
+    .sichtbar {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+        padding-bottom: 100px;
+    }
+
+    .sichtbar__img11,
+    .sichtbar__img12,
+    .sichtbar__text6,
+    .sichtbar__img13,
+    .sichtbar__text61 {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .sichtbar__text6,
+    .sichtbar__text61 {
+        padding: 0 20px;
+    }
+
+    .sichtbar__img12 {
+        width: 70%;
+        margin-top: 0;
+        margin: 0 20px 0 auto;
     }
 
     .branding__text {

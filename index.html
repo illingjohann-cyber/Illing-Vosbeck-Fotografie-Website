@@ -6,8 +6,8 @@
     <title>Illing &amp; Vosbeck Fotografie</title>
     <link rel="preload" href="assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/source-sans-3-300.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=20">
-    <script src="main.js?v=20" defer></script>
+    <link rel="stylesheet" href="style.css?v=22">
+    <script src="main.js?v=22" defer></script>
 </head>
 <body>
     <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
@@ -246,6 +246,64 @@
                 <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
             </figure>
         </section>
+
+        <!-- Bild 11, Bild 12, Text 6, Bild 13, Text 6.1 (Projekt „Sichtbar“) -->
+        <section class="sichtbar">
+            <figure class="sichtbar__img11 photo reveal">
+                <img
+                    src="assets/index/images/sichtbar_1.jpg"
+                    width="800" height="532"
+                    alt="Schwarz-Weiß-Porträt einer Architektin mit Pony vor dunklem Hintergrund">
+                <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
+            </figure>
+
+            <figure class="sichtbar__img12 photo photo--align-right reveal">
+                <img
+                    src="assets/index/images/sichtbar_2.jpg"
+                    width="532" height="800"
+                    alt="Schwarz-Weiß-Porträt einer Frau, liegend auf der Chaise Longue LC4">
+                <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
+            </figure>
+
+            <!-- Text 6 -->
+            <div class="sichtbar__text6 reveal">
+                <h2 class="corporate__title sichtbar__title">Sichtbar. Frauen in der Architektur</h2>
+                <h2 class="sichtbar__subtitle">Buch- und Ausstellungsprojekt</h2>
+                <p>Die Portraits, die 2021 im Rahmen des Festivals „Women in Architecture“ in Berlin entstanden sind, zeigen Frauen aus allen Bereichen der Architektur: als Architektin, Kommunikationsexpertin, Studentin der Architektur, Stadtplanerin oder Fachjournalistin.</p>
+                <p>Die seriell angelegte Arbeit in Schwarzweiß lässt den Frauen Raum, ihre persönliche Sichtweise auf das Thema und in Anspielung auf ikonische Fotografien bekannter Architekten wiederzugeben. Hinter dem Projekt steht die Idee, Stereotype zu hinterfragen und Alternativen zum sogenannten Starkult aufzuzeigen.</p>
+                <p>Die Protagonistinnen konnten das Thema mit den ihnen zur Verfügung gestellten Accessoires frei interpretieren. Eine zentrale Rolle spielten die beiden Möbel von Charlotte Perriand, die Chaise Longue LC4 und der Fauteuil Tournant LC7 – und die Zigarre von Mies van der Rohe.</p>
+            </div>
+
+            <figure class="sichtbar__img13 photo reveal">
+                <img
+                    src="assets/index/images/sichtbar_3.jpg"
+                    width="800" height="532"
+                    alt="Schwarz-Weiß-Porträt einer Frau in weißer Bluse mit Zigarre in der Hand">
+                <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
+            </figure>
+
+            <!-- Text 6.1 -->
+            <div class="sichtbar__text61 reveal">
+                <p>Charlotte Perriand (1903–1999), Designerin und Architektin, war maßgeblich an der Gestaltung der beiden Möbel im Büro von Le Corbusier beteiligt. Sie engagierte sich zeitlebens für benachteiligte Gruppen, war politisch engagiert und setzte sich als Feministin für Gleichberechtigung und Freiheit von Frauen ein. Ihre Möbel integrieren sich somit auch inhaltlich in das Projekt.</p>
+                <p>Die Portraits werden durch persönliche Texte zur Arbeitsweise und Intention sowie durch Statements ergänzt. Alle Frauen eint das zukunftsgerichtete Bestreben, nachhaltig, sozial und ressourcenschonend zu bauen, bestehende Gebäude umzunutzen und vor allem gemeinsam an neuen Lösungen zu arbeiten.</p>
+                <p>2023 erschien das gleichnamige Buch im Fruehwerk Verlag. Gedruckt und verlegt wurde es ebenfalls im Steidl Verlag.</p>
+                <dl class="isbn">
+                    <div><dt>ISBN Fruehwerk</dt><dd>978-3-941295-27-8</dd></div>
+                    <div><dt>ISBN Steidl</dt><dd>978-3-96999-250-0</dd></div>
+                </dl>
+            </div>
+        </section>
     </main>
+    <footer class="site-footer">
+        <p class="site-footer__copy">© 2026 Anke Illing</p>
+        <nav class="site-footer__links" aria-label="Footer">
+            <!-- Impressum-Seite und LinkedIn-Profil-URL noch eintragen -->
+            <a href="#">Impressum</a>
+            <a href="#" class="site-footer__linkedin" target="_blank" rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                LinkedIn
+            </a>
+        </nav>
+    </footer>
 </body>
 </html>
