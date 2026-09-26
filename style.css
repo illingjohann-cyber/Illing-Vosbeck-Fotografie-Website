@@ -128,7 +128,7 @@ a {
 .hero__intro {
     max-width: 80em;
     margin: 0;
-    padding: 60px 40px 60px 10%;
+    padding: 60px 40px 110px 10%;   /* mehr Luft über Bild 2 */
     font-size: 14px;
     line-height: 1.45;
 }
@@ -519,7 +519,7 @@ a {
     grid-template-columns: 2fr 1fr;      /* links Querformat breiter, rechts Hochformat */
     gap: var(--gap);
     align-items: start;
-    padding: 0 0 160px;                  /* Bilder gehen bis an den Rand */
+    padding: 0 0 60px;                   /* Bilder gehen bis an den Rand, Abstand nach unten übernimmt die Linie */
 }
 
 /* Höhenversatz: das Querformat beginnt tiefer als das Hochformat */
@@ -535,12 +535,9 @@ a {
 }
 
 /* ---------- Bild 8, Bild 9, Text 5, Bild 10 (Personal Branding) ---------- */
-/* oben: Bild 9 rechts rückt nah an Bild 6 heran, Bild 8 beginnt schräg links darunter
-   auf Höhe des letzten Drittels von Bild 9
+/* oben: Bild 9 rechts beginnt nur minimal höher als Bild 8 links
    unten: Text 5 links + größeres Hochformat (Bild 10) rechts */
 .branding {
-    --b9-width: calc((100vw - 11 * 24px) / 4 + 2 * 24px);   /* Breite von Bild 9 (3 von 12 Spalten) */
-    --b9-lift: calc(8vw + 80px);                             /* so weit rückt Bild 9 nach oben */
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
@@ -552,15 +549,13 @@ a {
     grid-column: 1 / 7;                  /* etwas kleiner */
     grid-row: 1;
     align-self: start;
-    /* beginnt bei 2/3 der Höhe von Bild 9 (Seitenverhältnis 819 × 1200) */
-    margin-top: calc(var(--b9-width) * 1200 / 819 * 2 / 3 - var(--b9-lift));
+    margin-top: 80px;                    /* minimal tiefer als Bild 9 */
 }
 
 .branding__small {
     grid-column: 9 / 12;
     grid-row: 1;
     align-self: start;
-    margin-top: calc(-1 * var(--b9-lift));   /* näher an Bild 6 darüber */
 }
 
 .branding__text {
