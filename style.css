@@ -496,6 +496,7 @@ a {
 
 .preloader__line {
     display: block;
+    white-space: nowrap;                 /* Name bricht nie um */
     overflow: hidden;                    /* Maske, aus der die Buchstaben aufsteigen */
 }
 
@@ -548,10 +549,11 @@ a {
 }
 
 .preloader__sub {
-    margin-right: -0.42em;               /* gleicht den Buchstabenabstand am Ende aus */
+    margin-right: calc(-1 * var(--sub-spacing, 0.42em));   /* gleicht den Abstand nach dem letzten Buchstaben aus */
+    white-space: nowrap;
     font-size: 0.34em;
     font-weight: 300;
-    letter-spacing: 0.8em;
+    letter-spacing: calc(var(--sub-spacing, 0.42em) + 0.4em);   /* startet weiter auseinander */
     text-transform: uppercase;
     opacity: 0;
     transition:
@@ -565,7 +567,7 @@ a {
 
 .preloader.is-building .preloader__sub {
     opacity: 1;
-    letter-spacing: 0.42em;
+    letter-spacing: var(--sub-spacing, 0.42em);   /* per JS exakt auf Namensbreite berechnet */
 }
 
 .preloader.is-gold .preloader__rule {
@@ -593,7 +595,7 @@ html.is-loading {
 
     .preloader__sub {
         opacity: 1;
-        letter-spacing: 0.42em;
+        letter-spacing: var(--sub-spacing, 0.42em);
         transition: none;
     }
 }

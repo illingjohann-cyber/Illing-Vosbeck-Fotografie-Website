@@ -127,6 +127,33 @@ function flyNameToHero() {
     }, { once: true });
 }
 
+// "PORTRÄTFOTOGRAFIE" so sperren, dass es genau so breit ist wie "ANKE ILLING" und die Linie
+function fitSubline() {
+    const logo = preloader.querySelector('.preloader__logo--name');
+    if (!logo) return;
+
+    const line = logo.querySelector('.preloader__line');
+    const sub = logo.querySelector('.preloader__sub');
+
+    // Breite der Unterzeile ohne Sperrung messen
+    sub.style.transition = 'none';
+    sub.style.letterSpacing = '0px';
+    sub.style.marginRight = '0px';
+
+    // sichtbare Namensbreite (ohne den Buchstabenabstand nach dem letzten Buchstaben)
+    const nameWidth = line.getBoundingClientRect().width - parseFloat(getComputedStyle(line).letterSpacing || 0);
+    const subWidth = sub.getBoundingClientRect().width;
+    const gaps = [...sub.textContent.trim()].length - 1;
+
+    logo.querySelector('.preloader__rule').style.width = `${nameWidth}px`;   // Linie = Namensbreite
+    logo.style.setProperty('--sub-spacing', `${(nameWidth - subWidth) / gaps}px`);
+
+    sub.style.letterSpacing = '';
+    sub.style.marginRight = '';
+    void sub.offsetWidth;
+    sub.style.transition = '';
+}
+
 async function runPreloader() {
     if (!preloader) {
         startReveals();
@@ -140,6 +167,8 @@ async function runPreloader() {
     });
 
     if (reducedMotion) {
+        await Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), wait(800)]);
+        fitSubline();
         preloader.classList.add('is-gold');
         await wait(400);
     } else {
@@ -147,6 +176,7 @@ async function runPreloader() {
 
         // warten, bis die Logo-Schrift geladen ist (höchstens 800 ms)
         await Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), wait(800)]);
+        fitSubline();
         requestAnimationFrame(() => preloader.classList.add('is-building'));
 
         // bei der Namens-Variante auf Linie und Unterzeile warten
