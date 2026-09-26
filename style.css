@@ -450,7 +450,7 @@ a {
     align-items: center;
     justify-content: center;
     background: var(--color-bg);
-    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
     /* Sicherheitsnetz: falls JavaScript nicht läuft, verschwindet der Vorhang trotzdem */
     animation: preloader-failsafe 0s 8s forwards;
 }
@@ -491,7 +491,7 @@ a {
     transform: translateY(110%);
     transition:
         transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
-        color 0.9s ease;
+        color 0.4s ease;
 }
 
 .preloader.is-building .char {
@@ -522,8 +522,8 @@ a {
     transform: scaleX(0);
     transform-origin: left;
     transition:
-        transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.5s,
-        background-color 0.9s ease;
+        transform 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.35s,
+        background-color 0.4s ease;
 }
 
 .preloader__sub {
@@ -534,8 +534,8 @@ a {
     text-transform: uppercase;
     opacity: 0;
     transition:
-        opacity 0.9s ease 0.9s,
-        letter-spacing 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
+        opacity 0.7s ease 0.6s,
+        letter-spacing 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
 }
 
 .preloader.is-building .preloader__rule {

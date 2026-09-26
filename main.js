@@ -99,14 +99,14 @@ async function runPreloader() {
         requestAnimationFrame(() => preloader.classList.add('is-building'));
 
         // bei der Namens-Variante auf Linie und Unterzeile warten
-        const buildTime = preloader.querySelector('.preloader__sub') ? Math.max(lastDelay + 0.9, 2.1) : lastDelay + 0.9;
+        const buildTime = preloader.querySelector('.preloader__sub') ? Math.max(lastDelay + 0.9, 1.6) : lastDelay + 0.9;
         await wait(buildTime * 1000);
         preloader.classList.add('is-gold');
-        await wait(1000);
+        await wait(450);
     }
 
     // Bilder sollen möglichst geladen sein, aber nicht ewig warten
-    await Promise.race([pageLoaded, wait(2000)]);
+    await Promise.race([pageLoaded, wait(1000)]);
 
     preloader.classList.add('is-done');
     document.documentElement.classList.remove('is-loading');
