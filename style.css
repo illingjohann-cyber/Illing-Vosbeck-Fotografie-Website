@@ -75,6 +75,14 @@ a {
     height: 40px;                       /* passt in den 56px hohen Header */
 }
 
+/* dezente Versionsnummer neben dem Logo (wird per JS aus style.css?v=… gelesen) */
+.site-version {
+    margin: 0 auto 0 16px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+}
+
 .main-nav {
     display: flex;
     gap: 2rem;
@@ -517,12 +525,55 @@ a {
 /* Höhenversatz: das Querformat beginnt tiefer als das Hochformat */
 .pair__landscape {
     margin-top: clamp(160px, 20vw, 380px);
+    width: 85%;                          /* kleiner als die Spalte → Lücke zum Hochformat */
 }
 
 /* Popup-Button beim rechten Bild rechtsbündig */
 .photo--align-right .photo__button {
     left: auto;
     right: 0;
+}
+
+/* ---------- Bild 8, Bild 9, Text 5, Bild 10 (Personal Branding) ---------- */
+/* oben: Querformat links am Rand + kleineres Hochformat rechts (unten bündig)
+   unten: Text links + größeres Hochformat rechts */
+.branding {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    row-gap: 88px;
+    padding: 0 0 160px;
+}
+
+.branding__wide {
+    grid-column: 1 / 8;
+    grid-row: 1;
+}
+
+.branding__small {
+    grid-column: 9 / 12;
+    grid-row: 1;
+    align-self: end;                     /* Unterkante bündig mit Bild 8 */
+}
+
+.branding__text {
+    grid-column: 1 / 8;
+    grid-row: 2;
+    align-self: start;
+    max-width: 60em;
+    padding: 0 40px 0 6vw;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.branding__text p {
+    margin: 0 0 1em;
+}
+
+.branding__portrait {
+    grid-column: 8 / 12;
+    grid-row: 2;
+    align-self: start;
 }
 
 /* ---------- Unterseite about ---------- */
@@ -961,6 +1012,34 @@ html.is-loading {
 
     .pair__landscape {
         margin-top: 0;
+        width: auto;
+    }
+
+    .branding {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+        padding-bottom: 100px;
+    }
+
+    .branding__wide,
+    .branding__small,
+    .branding__text,
+    .branding__portrait {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .branding__small {
+        width: 60%;
+        margin: 0 20px 0 auto;
+    }
+
+    .branding__text {
+        padding: 0 20px;
+    }
+
+    .branding__portrait {
+        margin: 0 20px;
     }
 
     .page {

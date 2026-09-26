@@ -1,6 +1,14 @@
 // Beim Neuladen immer oben starten, damit der Name aus der Start-Animation an die richtige Stelle fliegt
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
+// Website-Version im Header anzeigen – gelesen aus dem ?v=… der eingebundenen style.css,
+// damit die Nummer nur an einer Stelle gepflegt werden muss
+const versionLabel = document.querySelector('.site-version');
+const stylesheet = document.querySelector('link[rel="stylesheet"][href*="style.css"]');
+const versionMatch = stylesheet && stylesheet.getAttribute('href').match(/[?&]v=([^&]+)/);
+
+if (versionLabel && versionMatch) versionLabel.textContent = `v${versionMatch[1]}`;
+
 // Header bekommt beim Scrollen eine feine Linie
 const header = document.querySelector('.site-header');
 
