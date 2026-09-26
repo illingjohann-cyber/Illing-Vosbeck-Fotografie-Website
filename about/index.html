@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About &amp; Kontakt – Illing &amp; Vosbeck Fotografie</title>
+    <title>About – Illing &amp; Vosbeck Fotografie</title>
     <link rel="preload" href="../assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=12">
-    <script src="../main.js?v=12" defer></script>
+    <link rel="stylesheet" href="../style.css?v=16">
+    <script src="../main.js?v=16" defer></script>
 </head>
 <body>
     <header class="site-header">
@@ -14,57 +14,34 @@
             <img src="../assets/index/images/iv-logo-3.png" width="337" height="164" alt="Illing &amp; Vossbeck Fotografie">
         </a>
         <nav class="main-nav">
-            <a href="index.html" aria-current="page">about</a>
-            <a href="#kontakt">contact</a>
+            <a href="../about/index.html" aria-current="page">about</a>
+            <a href="../contact/index.html">contact</a>
         </nav>
     </header>
 
     <main class="page">
-        <!-- Über mich (Text ist ein Platzhalter) -->
-        <section class="page-intro reveal">
-            <h1 class="display-name">Anke Illing</h1>
-            <p class="page-intro__label">Porträtfotografie · Berlin</p>
-            <p class="page-intro__text">Platzhalter – Hier steht später ein ausführlicher Text über mich: wie ich zur Fotografie gekommen bin, wie ich arbeite und was mir bei einem Shooting wichtig ist.</p>
-        </section>
+        <!-- Über mich (Texte sind Platzhalter) -->
+        <section class="about-page">
+            <div class="about-page__text reveal">
+                <h1 class="display-name">Anke Illing</h1>
+                <p class="page-intro__label">Porträtfotografie · Berlin</p>
 
-        <!-- Kontakt -->
-        <section class="contact" id="kontakt">
-            <div class="contact__intro reveal">
-                <h2 class="contact__title">Kontakt</h2>
-                <p>Welches Projekt möchten Sie visualisieren? Schreiben Sie mir – ich melde mich zeitnah bei Ihnen für ein unverbindliches Kennenlerngespräch.</p>
+                <p>Platzhalter – Hier steht später ein ausführlicher Text über mich: wie ich zur Fotografie gekommen bin und was mich an Menschen in Verantwortung interessiert.</p>
+                <p>Platzhalter – Ein zweiter Absatz über meine Arbeitsweise: sorgfältige Vorbereitung, ruhige Atmosphäre beim Shooting und ein klarer Blick für Haltung und Persönlichkeit.</p>
+                <p>Platzhalter – Ein dritter Absatz über Stationen, Ausbildung oder Auszeichnungen und darüber, für wen ich heute arbeite.</p>
+
+                <a href="../contact/index.html" class="cta">
+                    <span>Kontakt aufnehmen</span>
+                    <span class="cta__arrow" aria-hidden="true">→</span>
+                </a>
             </div>
 
-            <!-- Das Formular ist noch nicht mit einem Versanddienst verbunden -->
-            <form class="contact-form reveal" novalidate>
-                <div class="field">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" autocomplete="name" required>
-                </div>
-                <div class="field">
-                    <label for="email">E-Mail</label>
-                    <input type="email" id="email" name="email" autocomplete="email" required>
-                </div>
-                <div class="field">
-                    <label for="company">Unternehmen <span class="field__optional">(optional)</span></label>
-                    <input type="text" id="company" name="company" autocomplete="organization">
-                </div>
-                <div class="field">
-                    <label for="message">Nachricht</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <label class="consent">
-                    <input type="checkbox" name="consent" required>
-                    <span>Ich bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden.</span>
-                </label>
-
-                <button type="submit" class="cta">
-                    <span>Nachricht senden</span>
-                    <span class="cta__arrow" aria-hidden="true">→</span>
-                </button>
-
-                <p class="contact-form__status" role="status" aria-live="polite"></p>
-            </form>
+            <figure class="about-page__image reveal">
+                <img
+                    src="../assets/index/images/Anke.jpg"
+                    width="660" height="800"
+                    alt="Porträt von Anke Illing vor einer Betonwand">
+            </figure>
         </section>
     </main>
 </body>

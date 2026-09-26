@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Illing &amp; Vosbeck Fotografie</title>
+    <link rel="preload" href="../assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../style.css?v=16">
+    <script src="../main.js?v=16" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="logo">
+            <img src="../assets/index/images/iv-logo-3.png" width="337" height="164" alt="Illing &amp; Vossbeck Fotografie">
+        </a>
+        <nav class="main-nav">
+            <a href="../about/index.html">about</a>
+            <a href="../contact/index.html" aria-current="page">contact</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="page-intro reveal">
+            <h1 class="display-name">Kontakt</h1>
+            <p class="page-intro__label">Anke Illing · Porträtfotografie</p>
+        </section>
+
+        <section class="contact" id="kontakt">
+            <div class="contact__intro reveal">
+                <h2 class="contact__title">Projekt anfragen</h2>
+                <p>Welches Projekt möchten Sie visualisieren? Schreiben Sie mir – ich melde mich zeitnah bei Ihnen für ein unverbindliches Kennenlerngespräch.</p>
+            </div>
+
+            <!-- Das Formular ist noch nicht mit einem Versanddienst verbunden -->
+            <form class="contact-form reveal" novalidate>
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="company">Unternehmen <span class="field__optional">(optional)</span></label>
+                    <input type="text" id="company" name="company" autocomplete="organization">
+                </div>
+                <div class="field">
+                    <label for="message">Nachricht</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <label class="consent">
+                    <input type="checkbox" name="consent" required>
+                    <span>Ich bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden.</span>
+                </label>
+
+                <button type="submit" class="cta">
+                    <span>Nachricht senden</span>
+                    <span class="cta__arrow" aria-hidden="true">→</span>
+                </button>
+
+                <p class="contact-form__status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

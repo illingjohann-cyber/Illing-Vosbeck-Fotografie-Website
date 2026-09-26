@@ -208,6 +208,7 @@ a {
 
 .photo__button {
     position: absolute;
+    white-space: nowrap;                 /* Beschriftung bleibt einzeilig */
     top: 100%;
     left: 0;
     z-index: 0;
@@ -361,7 +362,7 @@ a {
 
 /* ---------- Bild 3 + Text 2 (Expertise) ---------- */
 .expertise {
-    padding: 0 0 140px;
+    padding: 0 0 100px;
 }
 
 /* mittig, leicht nach links versetzt (zentriert wäre 20 %) */
@@ -395,6 +396,13 @@ a {
     padding-right: 20px;
 }
 
+/* Text 2.1 sitzt schräg rechts unter Text 2 */
+.expertise__text--offset {
+    max-width: none;
+    margin: 64px 0 0 48%;
+    padding-right: 10%;                  /* nutzt die Breite bis kurz vor den rechten Rand */
+}
+
 .expertise__title {
     margin: 0 0 1em;
     font-size: 22px;
@@ -423,16 +431,34 @@ a {
 }
 
 /* ---------- Bild 4 + Text 3 (Corporate Fotografie) ---------- */
+/* 12er-Raster: Bild 4 groß links, kleines Bild schräg rechts darunter, Text 3 links daneben */
 .corporate {
     display: grid;
-    grid-template-columns: 3fr 2fr;       /* Bild größer als der Text */
-    gap: 80px;
-    align-items: center;
-    padding: 0 6% 160px 0;               /* Bild geht bis an den linken Rand */
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+    padding: 0 0 160px;                  /* Bild 4 geht bis an den linken Rand */
+}
+
+.corporate__image {
+    grid-column: 1 / 8;
+    grid-row: 1;
+}
+
+.corporate__small {
+    grid-column: 8 / 12;                 /* größer, schließt die Lücke rechts */
+    grid-row: 2;
+    align-self: start;                   /* Figur so hoch wie das Bild, damit der Button am Bild sitzt */
+    margin-top: -18vw;                   /* ragt neben Bild 4 nach oben – versetzt, nicht bündig */
 }
 
 .corporate__text {
-    max-width: 40em;
+    grid-column: 1 / 8;                  /* breiter: vom linken Bereich bis an das kleine Bild */
+    grid-row: 2;
+    align-self: start;
+    margin-top: 96px;
+    padding-left: 6vw;
+    max-width: 60em;
+    padding-right: 40px;
     font-size: 16px;                     /* etwas größer als Text 2 */
     line-height: 1.6;
 }
@@ -490,7 +516,7 @@ a {
 
 /* Höhenversatz: das Querformat beginnt tiefer als das Hochformat */
 .pair__landscape {
-    margin-top: clamp(80px, 11vw, 200px);
+    margin-top: clamp(160px, 20vw, 380px);
 }
 
 /* Popup-Button beim rechten Bild rechtsbündig */
@@ -530,10 +556,26 @@ a {
     background: var(--color-accent);
 }
 
-.page-intro__text {
-    margin: 0;
+/* about-Seite: Text links, Porträt rechts */
+.about-page {
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 32%);
+    gap: 96px;
+    align-items: start;
+}
+
+.about-page__text {
+    max-width: 40em;
     font-size: 16px;
     line-height: 1.6;
+}
+
+.about-page__text p:not(.page-intro__label) {
+    margin: 0 0 1em;
+}
+
+.about-page__image {
+    margin-top: 120px;                   /* leichter Versatz zum Text */
 }
 
 /* ---------- Kontakt ---------- */
@@ -872,10 +914,30 @@ html.is-loading {
         padding-right: 0;
     }
 
+    .expertise__text--offset {
+        margin: 56px 20px 0;
+    }
+
     .corporate {
         grid-template-columns: 1fr;
-        gap: 56px;
-        padding: 0 20px 100px;
+        padding: 0 0 100px;
+    }
+
+    .corporate__image,
+    .corporate__small,
+    .corporate__text {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .corporate__small {
+        width: 60%;
+        margin: 48px 20px 0 auto;
+    }
+
+    .corporate__text {
+        margin: 48px 20px 0;
+        padding: 0;
     }
 
     .about-teaser {
@@ -907,6 +969,15 @@ html.is-loading {
 
     .page-intro {
         margin-bottom: 72px;
+    }
+
+    .about-page {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .about-page__image {
+        margin-top: 0;
     }
 
     .contact {
