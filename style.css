@@ -2,6 +2,9 @@
 :root {
     --color-text: #111;
     --color-bg: #fff;
+    --color-muted: #767676;
+    --color-line: #e2e2e2;
+    --color-accent: #a8935a;            /* Goldton aus dem Logo */
     --gutter: 20px;                     /* Außenabstand im Header */
     --gap: 10px;                        /* Abstand zwischen den Bildern */
     --header-height: 56px;
@@ -62,9 +65,14 @@ a {
 }
 
 .logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    width: auto;
+    height: 40px;                       /* passt in den 56px hohen Header */
 }
 
 .main-nav {
@@ -135,8 +143,173 @@ a {
     margin: 0 0 0.9em;
 }
 
-.hero__intro p:last-child {
+.hero__intro p:last-of-type {
     margin-bottom: 0;
+}
+
+/* ---------- CTA unter dem Text ---------- */
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 1.6em;
+    padding: 13px 20px;
+    border: 1px solid var(--color-text);
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta__arrow {
+    transition: transform 0.3s ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.cta:hover .cta__arrow,
+.cta:focus-visible .cta__arrow {
+    transform: translateX(4px);
+}
+
+/* ---------- Button, der beim Hovern unter dem Bild hervorkommt ---------- */
+.photo {
+    position: relative;
+    isolation: isolate;
+}
+
+.photo img {
+    position: relative;
+    z-index: 1;                          /* Bild liegt über dem Button */
+}
+
+.photo__button {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: 0;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transform: translateY(-100%);        /* versteckt hinter dem Bild */
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+}
+
+.photo:hover .photo__button,
+.photo:focus-within .photo__button {
+    transform: translateY(0);
+}
+
+.photo__button:hover,
+.photo__button:focus-visible {
+    background: var(--color-accent);
+}
+
+/* Auf Touch-Geräten gibt es kein Hovern – Button dort immer zeigen */
+@media (hover: none) {
+    .photo__button {
+        position: static;
+        transform: none;
+    }
+}
+
+/* ---------- Rezensionen (Laufband) ---------- */
+.reviews {
+    padding: 40px 0 120px;
+}
+
+.reviews__head {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 var(--gutter) 28px;
+}
+
+.reviews__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.reviews__label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+}
+
+.reviews__line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-line);
+}
+
+.reviews__viewport {
+    overflow: hidden;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.reviews__track {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: reviews-scroll 60s linear infinite;
+}
+
+.reviews__viewport:hover .reviews__track {
+    animation-play-state: paused;
+}
+
+@keyframes reviews-scroll {
+    to {
+        transform: translateX(-50%);     /* Liste ist per JS verdoppelt */
+    }
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    width: 440px;
+    padding: 40px 40px 32px;
+    border-right: 1px solid var(--color-line);
+}
+
+.review__text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+.review__author {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.review__author span {
+    display: block;
+    font-weight: 400;
+    color: var(--color-muted);
 }
 
 /* ---------- Einblend-Animation ---------- */
@@ -157,12 +330,20 @@ a {
         transform: none;
         transition: none;
     }
+
+    .reviews__track {
+        animation: none;
+    }
+
+    .reviews__viewport {
+        overflow-x: auto;
+    }
 }
 
 /* ---------- Mobil ---------- */
 @media (max-width: 800px) {
-    .logo {
-        font-size: 1.3rem;
+    .logo img {
+        height: 34px;
     }
 
     .main-nav {
@@ -175,5 +356,14 @@ a {
 
     .hero__intro {
         padding: 32px 20px;
+    }
+
+    .review {
+        width: 300px;
+        padding: 28px 24px 24px;
+    }
+
+    .review__text {
+        font-size: 16px;
     }
 }

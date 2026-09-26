@@ -28,3 +28,14 @@ if ('IntersectionObserver' in window) {
 } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+// Rezensions-Laufband: Einträge verdoppeln, damit die Schleife nahtlos läuft
+const reviewTrack = document.querySelector('.reviews__track');
+
+if (reviewTrack) {
+    Array.from(reviewTrack.children).forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        reviewTrack.appendChild(clone);
+    });
+}
