@@ -64,7 +64,7 @@ function splitLogoIntoChars() {
             [...node.textContent].forEach((letter) => {
                 const span = document.createElement('span');
                 span.className = 'char';
-                span.textContent = letter;
+                span.textContent = letter === ' ' ? ' ' : letter;   // Leerzeichen bleibt sichtbar
                 span.style.setProperty('--delay', `${index * 0.03 + lineIndex * 0.08}s`);
                 fragment.appendChild(span);
                 index++;
@@ -98,7 +98,9 @@ async function runPreloader() {
         await Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), wait(800)]);
         requestAnimationFrame(() => preloader.classList.add('is-building'));
 
-        await wait((lastDelay + 0.9) * 1000);
+        // bei der Namens-Variante auf Linie und Unterzeile warten
+        const buildTime = preloader.querySelector('.preloader__sub') ? Math.max(lastDelay + 0.9, 2.1) : lastDelay + 0.9;
+        await wait(buildTime * 1000);
         preloader.classList.add('is-gold');
         await wait(1000);
     }

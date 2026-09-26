@@ -401,43 +401,17 @@ a {
     color: var(--color-accent);
 }
 
-/* ---------- Schlichter Textlink ---------- */
-.text-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 2.2em;
-    padding-bottom: 4px;
-    border-bottom: 1px solid currentColor;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.text-link span {
-    transition: transform 0.3s ease;
-}
-
-.text-link:hover,
-.text-link:focus-visible {
-    color: var(--color-accent);
-}
-
-.text-link:hover span,
-.text-link:focus-visible span {
-    transform: translateX(4px);
-}
-
 /* ---------- Bild 4 + Text 3 (Corporate Fotografie) ---------- */
 .corporate {
     display: grid;
-    grid-template-columns: 11fr 9fr;
-    gap: 72px;
+    grid-template-columns: 3fr 2fr;       /* Bild größer als der Text */
+    gap: 80px;
     align-items: center;
-    padding: 0 8% 160px 5%;              /* deutlich links, aber nicht am Rand */
+    padding: 0 6% 160px 0;               /* Bild geht bis an den linken Rand */
 }
 
 .corporate__text {
-    max-width: 36em;
+    max-width: 40em;
     font-size: 16px;                     /* etwas größer als Text 2 */
     line-height: 1.6;
 }
@@ -451,11 +425,6 @@ a {
 
 .corporate__text p {
     margin: 0 0 1em;
-}
-
-.corporate__text .text-link {
-    margin-top: 1.4em;
-    font-size: 15px;
 }
 
 /* ---------- Vorhang mit Logo-Animation ---------- */
@@ -498,7 +467,7 @@ a {
 
 .preloader__logo {
     font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
-    font-size: clamp(44px, 7vw, 88px);
+    font-size: clamp(34px, 5vw, 60px);
     line-height: 0.92;
     letter-spacing: -0.01em;
     color: var(--color-text);
@@ -533,6 +502,55 @@ a {
     color: var(--color-accent);
 }
 
+/* Variante "Anke Illing – Porträtfotografie":
+   Name steigt auf, feine Linie zieht sich darunter, Unterzeile rückt gesperrt zusammen */
+.preloader__logo--name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: clamp(30px, 4.2vw, 52px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.preloader__rule {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0.35em 0 0.45em;
+    background: var(--color-text);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:
+        transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.5s,
+        background-color 0.9s ease;
+}
+
+.preloader__sub {
+    margin-right: -0.42em;               /* gleicht den Buchstabenabstand am Ende aus */
+    font-size: 0.34em;
+    font-weight: 300;
+    letter-spacing: 0.8em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition:
+        opacity 0.9s ease 0.9s,
+        letter-spacing 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
+}
+
+.preloader.is-building .preloader__rule {
+    transform: scaleX(1);
+}
+
+.preloader.is-building .preloader__sub {
+    opacity: 1;
+    letter-spacing: 0.42em;
+}
+
+.preloader.is-gold .preloader__rule {
+    background: var(--color-accent);
+}
+
 /* Während der Vorhang da ist, nicht scrollen */
 html.is-loading {
     overflow: hidden;
@@ -546,6 +564,16 @@ html.is-loading {
 
     .preloader .char {
         transform: none;
+    }
+
+    .preloader__rule {
+        transform: none;
+    }
+
+    .preloader__sub {
+        opacity: 1;
+        letter-spacing: 0.42em;
+        transition: none;
     }
 }
 
