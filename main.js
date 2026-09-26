@@ -22,7 +22,8 @@ if ('IntersectionObserver' in window) {
     }, { threshold: 0.1 });
 
     revealItems.forEach((item, i) => {
-        item.style.transitionDelay = `${i * 0.15}s`;
+        // nur die ersten Elemente oben leicht zeitversetzt, weiter unten ohne Verzögerung
+        if (i < 3) item.style.transitionDelay = `${i * 0.15}s`;
         observer.observe(item);
     });
 } else {

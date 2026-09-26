@@ -221,11 +221,17 @@ a {
         position: static;
         transform: none;
     }
+
+    .photo--right .photo__button {
+        display: flex;
+        width: max-content;
+        margin-left: auto;
+    }
 }
 
 /* ---------- Rezensionen (Laufband) ---------- */
 .reviews {
-    padding: 40px 0 120px;
+    padding: 40px 0 0;
 }
 
 .reviews__head {
@@ -312,6 +318,115 @@ a {
     color: var(--color-muted);
 }
 
+/* ---------- Abgrenzung unter den Rezensionen ---------- */
+.divider {
+    position: relative;
+    width: 1px;
+    height: 96px;
+    margin: 80px auto;
+    background: var(--color-line);
+}
+
+.divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--color-accent);
+    transform: translate(-50%, 100%);
+}
+
+/* ---------- Bild 3 + Text 2 (Expertise) ---------- */
+.expertise {
+    padding: 0 0 140px;
+}
+
+/* mittig, leicht nach links versetzt (zentriert wäre 20 %) */
+.expertise__image {
+    width: 60%;
+    margin-left: 15%;
+}
+
+/* Popup-Button bei diesem Bild: kommt rechts neben dem Bild unten heraus */
+.photo--right .photo__button {
+    top: auto;
+    bottom: 0;
+    left: 100%;
+    transform: translateX(-100%);        /* versteckt hinter dem Bild */
+}
+
+.photo--right:hover .photo__button,
+.photo--right:focus-within .photo__button {
+    transform: translateX(0);
+}
+
+@media (hover: none) {
+    .photo--right .photo__button {
+        transform: none;
+    }
+}
+
+.expertise__text {
+    max-width: 44em;
+    margin: 88px 0 0 15%;
+    padding-right: 20px;
+}
+
+.expertise__title {
+    margin: 0 0 1em;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.expertise__text p {
+    margin: 0 0 0.9em;
+}
+
+.clients {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.clients li {
+    display: inline;
+}
+
+.clients li:not(:last-child)::after {
+    content: "•";
+    margin: 0 0.6em;
+    color: var(--color-accent);
+}
+
+/* ---------- Schlichter Textlink ---------- */
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2.2em;
+    padding-bottom: 4px;
+    border-bottom: 1px solid currentColor;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.text-link span {
+    transition: transform 0.3s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+    color: var(--color-accent);
+}
+
+.text-link:hover span,
+.text-link:focus-visible span {
+    transform: translateX(4px);
+}
+
 /* ---------- Einblend-Animation ---------- */
 .reveal {
     opacity: 0;
@@ -365,5 +480,20 @@ a {
 
     .review__text {
         font-size: 16px;
+    }
+
+    .divider {
+        height: 64px;
+        margin: 56px auto;
+    }
+
+    .expertise__image {
+        width: auto;
+        margin: 0 20px;
+    }
+
+    .expertise__text {
+        margin: 56px 20px 0;
+        padding-right: 0;
     }
 }
