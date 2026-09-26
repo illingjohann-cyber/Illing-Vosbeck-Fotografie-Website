@@ -479,6 +479,26 @@ a {
     text-transform: uppercase;
 }
 
+/* ---------- Bild 7 + Bild 6 (gespiegelt zu Bild 1 und 2) ---------- */
+.pair {
+    display: grid;
+    grid-template-columns: 2fr 1fr;      /* links Querformat breiter, rechts Hochformat */
+    gap: var(--gap);
+    align-items: start;
+    padding: 0 0 160px;                  /* Bilder gehen bis an den Rand */
+}
+
+/* Höhenversatz: das Querformat beginnt tiefer als das Hochformat */
+.pair__landscape {
+    margin-top: clamp(80px, 11vw, 200px);
+}
+
+/* Popup-Button beim rechten Bild rechtsbündig */
+.photo--align-right .photo__button {
+    left: auto;
+    right: 0;
+}
+
 /* ---------- Unterseite about ---------- */
 .page {
     padding: 96px 10% 160px;
@@ -870,6 +890,15 @@ html.is-loading {
 
     .about-teaser__image {
         order: -1;
+    }
+
+    .pair {
+        grid-template-columns: 1fr;
+        padding-bottom: 100px;
+    }
+
+    .pair__landscape {
+        margin-top: 0;
     }
 
     .page {
