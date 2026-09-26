@@ -110,11 +110,33 @@ a {
 
 /* Text sitzt eingerückt über dem Querformat und erzeugt den Höhenversatz */
 .hero__intro {
-    max-width: 60em;
+    max-width: 80em;
     margin: 0;
-    padding: 80px 20px 80px 25%;
+    padding: 60px 40px 60px 10%;
     font-size: 14px;
     line-height: 1.45;
+}
+
+.hero__name {
+    margin: 0 0 0.3em;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.hero__title {
+    margin: 0 0 1.4em;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.hero__intro p:not(.hero__name) {
+    margin: 0 0 0.9em;
+}
+
+.hero__intro p:last-child {
+    margin-bottom: 0;
 }
 
 /* ---------- Einblend-Animation ---------- */
