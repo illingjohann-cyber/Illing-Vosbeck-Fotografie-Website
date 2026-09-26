@@ -125,11 +125,32 @@ a {
     line-height: 1.45;
 }
 
+/* sieht genauso aus wie "ANKE ILLING" in der Start-Animation */
 .hero__name {
-    margin: 0 0 0.3em;
+    width: fit-content;
+    margin: 0 0 0.4em;
+    font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
     font-size: 36px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+/* fliegender Name beim Übergang vom Vorhang zur Seite */
+.name-fly {
+    position: fixed;
+    z-index: 1001;
+    font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: var(--color-accent);
+    pointer-events: none;
+    transform-origin: 0 0;
+    transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .hero__title {

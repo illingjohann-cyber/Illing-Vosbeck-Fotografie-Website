@@ -1,3 +1,6 @@
+// Beim Neuladen immer oben starten, damit der Name aus der Start-Animation an die richtige Stelle fliegt
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 // Header bekommt beim Scrollen eine feine Linie
 const header = document.querySelector('.site-header');
 
@@ -76,6 +79,54 @@ function splitLogoIntoChars() {
     return index * 0.03 + 0.16;          // Verzögerung des letzten Buchstabens
 }
 
+// "ANKE ILLING" aus dem Vorhang fliegt an die Stelle des Namens in Text 1
+function flyNameToHero() {
+    const source = preloader.querySelector('.preloader__logo--name .preloader__line');
+    const target = document.querySelector('.hero__name');
+    if (!source || !target || reducedMotion) return;
+
+    // Zielposition im fertig eingeblendeten Zustand messen (ohne den Einblend-Versatz)
+    const intro = target.closest('.reveal');
+    if (intro) {
+        intro.style.transition = 'none';
+        intro.classList.add('is-visible');
+    }
+    const to = target.getBoundingClientRect();
+    if (intro) {
+        intro.classList.remove('is-visible');
+        void intro.offsetHeight;
+        intro.style.transition = '';
+    }
+
+    // Ziel nicht im sichtbaren Bereich (z. B. Handy) → kein Flug
+    if (to.top > window.innerHeight) return;
+
+    const from = source.getBoundingClientRect();
+    const fly = document.createElement('div');
+    fly.className = 'name-fly';
+    fly.setAttribute('aria-hidden', 'true');
+    fly.textContent = source.textContent.replace(/ /g, ' ');
+    fly.style.fontSize = getComputedStyle(source).fontSize;
+    fly.style.left = `${from.left}px`;
+    fly.style.top = `${from.top}px`;
+    document.body.appendChild(fly);
+
+    source.style.visibility = 'hidden';
+    target.style.visibility = 'hidden';
+
+    const scale = to.width / from.width;
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            fly.style.transform = `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${scale})`;
+        });
+    });
+
+    fly.addEventListener('transitionend', () => {
+        target.style.visibility = '';
+        fly.remove();
+    }, { once: true });
+}
+
 async function runPreloader() {
     if (!preloader) {
         startReveals();
@@ -108,8 +159,11 @@ async function runPreloader() {
     // Bilder sollen möglichst geladen sein, aber nicht ewig warten
     await Promise.race([pageLoaded, wait(1000)]);
 
-    preloader.classList.add('is-done');
+    // Scrollen erst freigeben, dann messen (Scrollbalken verändert die Breite)
     document.documentElement.classList.remove('is-loading');
+    window.scrollTo(0, 0);
+    flyNameToHero();
+    preloader.classList.add('is-done');
     startReveals();
 
     preloader.addEventListener('transitionend', (e) => {
