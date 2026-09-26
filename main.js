@@ -203,3 +203,33 @@ async function runPreloader() {
 }
 
 runPreloader();
+
+// Kontaktformular (about-Seite): einfache Prüfung der Pflichtfelder.
+// Noch nicht mit einem Versanddienst verbunden – es wird nichts abgeschickt.
+const contactForm = document.querySelector('.contact-form');
+
+if (contactForm) {
+    const status = contactForm.querySelector('.contact-form__status');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let valid = true;
+
+        contactForm.querySelectorAll('[required]').forEach((input) => {
+            const wrapper = input.closest('.field, .consent');
+            const ok = input.type === 'checkbox' ? input.checked : input.checkValidity() && input.value.trim() !== '';
+            wrapper.classList.toggle('is-invalid', !ok);
+            if (!ok) valid = false;
+        });
+
+        status.textContent = valid
+            ? 'Danke! Das Formular ist noch nicht freigeschaltet – die Nachricht wurde nicht versendet.'
+            : 'Bitte füllen Sie alle markierten Felder aus.';
+    });
+
+    // Markierung entfernen, sobald ein Feld korrigiert wird
+    contactForm.addEventListener('input', (e) => {
+        const wrapper = e.target.closest('.field, .consent');
+        if (wrapper) wrapper.classList.remove('is-invalid');
+    });
+}

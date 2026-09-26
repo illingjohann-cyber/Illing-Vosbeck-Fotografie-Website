@@ -448,6 +448,188 @@ a {
     margin: 0 0 1em;
 }
 
+/* ---------- Text 4 + Bild 5 (Über mich) ---------- */
+.about-teaser {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 34%);
+    gap: 96px;
+    align-items: center;
+    padding: 0 8% 160px 10%;             /* Bild rechts, aber nicht am Rand */
+}
+
+.about-teaser__text {
+    max-width: 38em;
+    justify-self: end;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.about-teaser__text p {
+    margin: 0 0 1em;
+}
+
+/* Name im Stil der Start-Animation, hier in Schwarz */
+.display-name {
+    margin: 0 0 0.6em;
+    font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(30px, 3.4vw, 48px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* ---------- Unterseite about ---------- */
+.page {
+    padding: 96px 10% 160px;
+}
+
+.page-intro {
+    max-width: 44em;
+    margin-bottom: 120px;
+}
+
+.page-intro .display-name {
+    margin-bottom: 0.4em;
+}
+
+.page-intro__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 32px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.page-intro__label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+}
+
+.page-intro__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ---------- Kontakt ---------- */
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 96px;
+    padding-top: 64px;
+    border-top: 1px solid var(--color-line);
+    scroll-margin-top: calc(var(--header-height) + 24px);
+}
+
+.contact__title {
+    margin: 0 0 1em;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.contact__intro p {
+    margin: 0;
+    max-width: 28em;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 640px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.field__optional {
+    color: var(--color-muted);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 16px;
+    color: var(--color-text);
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-text);
+}
+
+.field.is-invalid input,
+.field.is-invalid textarea {
+    border-bottom-color: #b3261e;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--color-muted);
+    cursor: pointer;
+}
+
+.consent input {
+    margin: 2px 0 0;
+    accent-color: var(--color-text);
+}
+
+.consent.is-invalid {
+    color: #b3261e;
+}
+
+.contact-form .cta {
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+.contact-form__status {
+    min-height: 1.5em;
+    margin: -12px 0 0;
+    font-size: 13px;
+}
+
+/* Button-Element sieht aus wie der Link-CTA */
+button.cta {
+    background: transparent;
+    font: inherit;
+    font-size: 14px;
+    color: inherit;
+    border-radius: 0;
+    cursor: pointer;
+}
+
 /* ---------- Vorhang mit Logo-Animation ---------- */
 @font-face {
     font-family: "IV Logo";
@@ -674,5 +856,32 @@ html.is-loading {
         grid-template-columns: 1fr;
         gap: 56px;
         padding: 0 20px 100px;
+    }
+
+    .about-teaser {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 0 20px 100px;
+    }
+
+    .about-teaser__text {
+        justify-self: start;
+    }
+
+    .about-teaser__image {
+        order: -1;
+    }
+
+    .page {
+        padding: 56px 20px 100px;
+    }
+
+    .page-intro {
+        margin-bottom: 72px;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+        gap: 48px;
     }
 }
