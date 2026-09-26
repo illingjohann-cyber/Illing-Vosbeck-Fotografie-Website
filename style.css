@@ -535,25 +535,32 @@ a {
 }
 
 /* ---------- Bild 8, Bild 9, Text 5, Bild 10 (Personal Branding) ---------- */
-/* oben: Querformat links am Rand + kleineres Hochformat rechts (unten bündig)
-   unten: Text links + größeres Hochformat rechts */
+/* oben: Bild 9 rechts rückt nah an Bild 6 heran, Bild 8 beginnt schräg links darunter
+   auf Höhe des letzten Drittels von Bild 9
+   unten: Text 5 links + größeres Hochformat (Bild 10) rechts */
 .branding {
+    --b9-width: calc((100vw - 11 * 24px) / 4 + 2 * 24px);   /* Breite von Bild 9 (3 von 12 Spalten) */
+    --b9-lift: calc(8vw + 80px);                             /* so weit rückt Bild 9 nach oben */
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-    row-gap: 88px;
+    row-gap: 112px;                      /* mittlerer Abstand zu Text 5 und Bild 10 */
     padding: 0 0 160px;
 }
 
 .branding__wide {
-    grid-column: 1 / 8;
+    grid-column: 1 / 7;                  /* etwas kleiner */
     grid-row: 1;
+    align-self: start;
+    /* beginnt bei 2/3 der Höhe von Bild 9 (Seitenverhältnis 819 × 1200) */
+    margin-top: calc(var(--b9-width) * 1200 / 819 * 2 / 3 - var(--b9-lift));
 }
 
 .branding__small {
     grid-column: 9 / 12;
     grid-row: 1;
-    align-self: end;                     /* Unterkante bündig mit Bild 8 */
+    align-self: start;
+    margin-top: calc(-1 * var(--b9-lift));   /* näher an Bild 6 darüber */
 }
 
 .branding__text {
@@ -1032,6 +1039,10 @@ html.is-loading {
     .branding__small {
         width: 60%;
         margin: 0 20px 0 auto;
+    }
+
+    .branding__wide {
+        margin-top: 0;
     }
 
     .branding__text {
