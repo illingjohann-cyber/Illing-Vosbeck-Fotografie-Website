@@ -541,7 +541,7 @@ a {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 24px;
-    row-gap: 112px;                      /* mittlerer Abstand zu Text 5 und Bild 10 */
+    row-gap: 180px;                      /* Abstand zwischen Bild 8/9 und Text 5/Bild 10 */
     padding: 0 0 160px;
 }
 
