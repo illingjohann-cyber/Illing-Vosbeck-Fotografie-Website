@@ -427,6 +427,128 @@ a {
     transform: translateX(4px);
 }
 
+/* ---------- Bild 4 + Text 3 (Corporate Fotografie) ---------- */
+.corporate {
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+    gap: 72px;
+    align-items: center;
+    padding: 0 8% 160px 5%;              /* deutlich links, aber nicht am Rand */
+}
+
+.corporate__text {
+    max-width: 36em;
+    font-size: 16px;                     /* etwas größer als Text 2 */
+    line-height: 1.6;
+}
+
+.corporate__title {
+    margin: 0 0 1em;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.corporate__text p {
+    margin: 0 0 1em;
+}
+
+.corporate__text .text-link {
+    margin-top: 1.4em;
+    font-size: 15px;
+}
+
+/* ---------- Vorhang mit Logo-Animation ---------- */
+@font-face {
+    font-family: "IV Logo";
+    src: url("assets/fonts/source-sans-3-700.woff2") format("woff2");
+    font-weight: 700;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "IV Logo";
+    src: url("assets/fonts/source-sans-3-300.woff2") format("woff2");
+    font-weight: 300;
+    font-display: block;
+}
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+    /* Sicherheitsnetz: falls JavaScript nicht läuft, verschwindet der Vorhang trotzdem */
+    animation: preloader-failsafe 0s 8s forwards;
+}
+
+@keyframes preloader-failsafe {
+    to {
+        visibility: hidden;
+    }
+}
+
+.preloader.is-done {
+    transform: translateY(-100%);
+}
+
+.preloader__logo {
+    font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(44px, 7vw, 88px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+}
+
+.preloader__line {
+    display: block;
+    overflow: hidden;                    /* Maske, aus der die Buchstaben aufsteigen */
+}
+
+.preloader__logo b {
+    font-weight: 700;
+}
+
+.preloader__logo .light {
+    font-weight: 300;
+}
+
+.preloader .char {
+    display: inline-block;
+    transform: translateY(110%);
+    transition:
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+        color 0.9s ease;
+}
+
+.preloader.is-building .char {
+    transform: translateY(0);
+}
+
+.preloader.is-gold .char {
+    color: var(--color-accent);
+}
+
+/* Während der Vorhang da ist, nicht scrollen */
+html.is-loading {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preloader,
+    .preloader .char {
+        transition: none;
+    }
+
+    .preloader .char {
+        transform: none;
+    }
+}
+
 /* ---------- Einblend-Animation ---------- */
 .reveal {
     opacity: 0;
@@ -495,5 +617,11 @@ a {
     .expertise__text {
         margin: 56px 20px 0;
         padding-right: 0;
+    }
+
+    .corporate {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        padding: 0 20px 100px;
     }
 }

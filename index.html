@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Illing &amp; Vosbeck Fotografie</title>
-    <link rel="stylesheet" href="style.css?v=4">
-    <script src="main.js?v=4" defer></script>
+    <link rel="preload" href="assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/source-sans-3-300.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="main.js?v=5" defer></script>
 </head>
 <body>
+    <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader__logo">
+            <span class="preloader__line"><b>ILLING</b><span class="light">&amp;</span></span>
+            <span class="preloader__line"><b>VOSSBECK</b></span>
+            <span class="preloader__line"><span class="light">FOTOGRAFIE</span></span>
+        </div>
+    </div>
+
     <header class="site-header">
         <a href="index.html" class="logo">
             <img src="assets/index/images/iv-logo-3.png" width="337" height="164" alt="Illing &amp; Vossbeck Fotografie">
@@ -22,9 +33,9 @@
         <section class="hero">
             <figure class="hero__portrait photo reveal">
                 <img
-                    src="assets/index/images/K.%20Fink_4615.jpg"
-                    width="1088" height="1200"
-                    alt="Porträt einer Führungskraft im Trenchcoat vor moderner Architektur">
+                    src="assets/index/images/NT.jpg"
+                    width="800" height="1200"
+                    alt="Porträt einer Frau in Schwarz, sitzend auf einer Steintreppe">
                 <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
             </figure>
 
@@ -115,6 +126,26 @@
                 </ul>
 
                 <a href="about.html" class="text-link">weitere Referenzen <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="corporate">
+            <figure class="corporate__image photo reveal">
+                <img
+                    src="assets/index/images/Gulde.jpg"
+                    width="1200" height="801"
+                    alt="Team im Gespräch an einem Tisch im hellen Büro">
+                <button type="button" class="photo__button">Projekt ansehen <span aria-hidden="true">→</span></button>
+            </figure>
+
+            <div class="corporate__text reveal">
+                <h2 class="corporate__title">Corporate Fotografie</h2>
+                <p>Ein überzeugender Markenauftritt basiert auf Vertrauen, Haltung und den Menschen hinter Ihrem Unternehmen. Als Spezialistin für Unternehmensfotografie übersetze ich Ihre Corporate Identity in eine ausdrucksstarke visuelle Sprache, die Ihren Markenauftritt nachhaltig stärkt.</p>
+                <p>Im Fokus stehen natürliche und sympathische Porträts von Führungskräften und Teams, die eine perfekte Balance aus Professionalität und Nahbarkeit ausstrahlen. Gleichzeitig machen lebendige Einblicke in Ihren Arbeitsalltag Ihre individuelle Unternehmenskultur für Partner, Kunden und Bewerber greifbar.</p>
+                <p>Damit das Shooting nahtlos in Ihren Arbeitsalltag passt, lege ich besonderen Wert auf eine effiziente Organisation und eine strukturierte Umsetzung vor Ort.</p>
+                <p>Welches Projekt möchten Sie visualisieren? Schreiben Sie mir.</p>
+
+                <a href="#contact" class="text-link">Projekt anfragen <span aria-hidden="true">→</span></a>
             </div>
         </section>
     </main>
