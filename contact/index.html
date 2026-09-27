@@ -5,10 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – Illing &amp; Vosbeck Fotografie</title>
     <link rel="preload" href="../assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=26">
-    <script src="../main.js?v=26" defer></script>
+    <link rel="preload" href="../assets/fonts/source-sans-3-300.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+        // Start-Animation nur beim Neuladen (Strg + R) oder beim ersten Aufruf von außen –
+        // nicht, wenn man über einen Link innerhalb der Website kommt oder zurück navigiert
+        (function () {
+            var show = true;
+            try {
+                var nav = performance.getEntriesByType('navigation')[0];
+                var type = nav ? nav.type : 'navigate';
+                var internal = sessionStorage.getItem('iv-internal') === '1';
+                sessionStorage.removeItem('iv-internal');
+                if (type === 'back_forward' || (type === 'navigate' && internal)) show = false;
+            } catch (e) {}
+            if (show) document.documentElement.classList.add('with-preloader');
+        })();
+    </script>
+    <link rel="stylesheet" href="../style.css?v=30">
+    <script src="../main.js?v=30" defer></script>
 </head>
 <body>
+    <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader__logo preloader__logo--name">
+            <span class="preloader__line"><b>ANKE ILLING</b></span>
+            <span class="preloader__rule"></span>
+            <span class="preloader__sub">Porträtfotografie</span>
+        </div>
+    </div>
+
     <header class="site-header">
         <a href="../index.html" class="logo">
             <img src="../assets/index/images/iv-logo-3.png" width="337" height="164" alt="Illing &amp; Vossbeck Fotografie">

@@ -162,9 +162,44 @@ function fitSubline() {
     sub.style.transition = '';
 }
 
+// Scroll-Hinweis: erscheint unten mittig, wenn eine Weile nicht gescrollt wird;
+// verschwindet beim Scrollen und blendet beim Drüberfahren mit der Maus weich aus
+const scrollHint = document.querySelector('.scroll-hint');
+let scrollHintTimer;
+
+function scheduleScrollHint() {
+    if (!scrollHint) return;
+    clearTimeout(scrollHintTimer);
+    scrollHint.classList.remove('is-visible');
+
+    scrollHintTimer = setTimeout(() => {
+        const nearBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200;
+        if (!nearBottom) scrollHint.classList.add('is-visible');
+    }, 3500);
+}
+
+function initScrollHint() {
+    if (!scrollHint) return;
+    window.addEventListener('scroll', scheduleScrollHint, { passive: true });
+    scrollHint.addEventListener('mouseenter', scheduleScrollHint);
+    scheduleScrollHint();
+}
+
+// Klick auf einen Link innerhalb der Website merken → dort keine Start-Animation
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link || link.target === '_blank') return;
+    if (link.protocol === location.protocol && link.host === location.host) {
+        try { sessionStorage.setItem('iv-internal', '1'); } catch (err) {}
+    }
+});
+
 async function runPreloader() {
-    if (!preloader) {
+    // Start-Animation nur, wenn das Skript im <head> sie freigegeben hat (Neuladen / Aufruf von außen)
+    if (!preloader || !document.documentElement.classList.contains('with-preloader')) {
+        if (preloader) preloader.remove();
         startReveals();
+        initScrollHint();
         return;
     }
 
@@ -203,6 +238,7 @@ async function runPreloader() {
     flyNameToHero();
     preloader.classList.add('is-done');
     startReveals();
+    initScrollHint();
 
     preloader.addEventListener('transitionend', (e) => {
         if (e.target === preloader) preloader.remove();   // nur das Hochgleiten des Vorhangs, nicht die Buchstaben

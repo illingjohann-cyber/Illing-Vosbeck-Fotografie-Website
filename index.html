@@ -6,8 +6,23 @@
     <title>Illing &amp; Vosbeck Fotografie</title>
     <link rel="preload" href="assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/source-sans-3-300.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=26">
-    <script src="main.js?v=26" defer></script>
+    <script>
+        // Start-Animation nur beim Neuladen (Strg + R) oder beim ersten Aufruf von außen –
+        // nicht, wenn man über einen Link innerhalb der Website kommt oder zurück navigiert
+        (function () {
+            var show = true;
+            try {
+                var nav = performance.getEntriesByType('navigation')[0];
+                var type = nav ? nav.type : 'navigate';
+                var internal = sessionStorage.getItem('iv-internal') === '1';
+                sessionStorage.removeItem('iv-internal');
+                if (type === 'back_forward' || (type === 'navigate' && internal)) show = false;
+            } catch (e) {}
+            if (show) document.documentElement.classList.add('with-preloader');
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css?v=30">
+    <script src="main.js?v=30" defer></script>
 </head>
 <body>
     <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
@@ -308,5 +323,10 @@
             </a>
         </nav>
     </footer>
+
+    <!-- Scroll-Hinweis: erscheint, wenn eine Weile nicht gescrollt wird -->
+    <div class="scroll-hint" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
 </body>
 </html>

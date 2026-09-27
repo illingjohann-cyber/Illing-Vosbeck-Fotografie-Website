@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Portraits – Illing &amp; Vosbeck Fotografie</title>
+    <title>Porträts Führungskräfte – Illing &amp; Vosbeck Fotografie</title>
     <link rel="preload" href="../assets/fonts/source-sans-3-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="../style.css?v=26">
-    <script src="../main.js?v=26" defer></script>
+    <link rel="preload" href="../assets/fonts/source-sans-3-300.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+        // Start-Animation nur beim Neuladen (Strg + R) oder beim ersten Aufruf von außen –
+        // nicht, wenn man über einen Link innerhalb der Website kommt oder zurück navigiert
+        (function () {
+            var show = true;
+            try {
+                var nav = performance.getEntriesByType('navigation')[0];
+                var type = nav ? nav.type : 'navigate';
+                var internal = sessionStorage.getItem('iv-internal') === '1';
+                sessionStorage.removeItem('iv-internal');
+                if (type === 'back_forward' || (type === 'navigate' && internal)) show = false;
+            } catch (e) {}
+            if (show) document.documentElement.classList.add('with-preloader');
+        })();
+    </script>
+    <link rel="stylesheet" href="../style.css?v=30">
+    <script src="../main.js?v=30" defer></script>
 </head>
 <body>
+    <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
+    <div class="preloader" aria-hidden="true">
+        <div class="preloader__logo preloader__logo--name">
+            <span class="preloader__line"><b>ANKE ILLING</b></span>
+            <span class="preloader__rule"></span>
+            <span class="preloader__sub">Porträtfotografie</span>
+        </div>
+    </div>
+
     <header class="site-header">
         <a href="../index.html" class="logo">
             <img src="../assets/index/images/iv-logo-3.png" width="337" height="164" alt="Illing &amp; Vossbeck Fotografie">
@@ -20,12 +45,110 @@
         </nav>
     </header>
 
-    <main class="page">
-        <section class="page-intro reveal">
-            <h1 class="display-name">Executive Portraits</h1>
+    <main class="ep">
+        <section class="page-intro ep-intro reveal">
+            <h1 class="display-name">Porträts Führungskräfte</h1>
             <p class="page-intro__label">Anke Illing · Porträtfotografie</p>
-            <p>Platzhalter – Hier entsteht die Projektseite „Executive Portraits“.</p>
+
+            <!-- Text 0.1 -->
+            <div class="ep-intro__text">
+                <p>In Berlin und bundesweit unterstütze ich Unternehmerinnen, Vorstände, Geschäftsführer und Führungskräfte dabei, ihre Haltung und Vision in der visuellen Kommunikation sichtbar zu machen.</p>
+                <p>Sie gestalten Transformation, führen Ihre Teams mit Respekt und setzen auf transparente Kommunikation, Offenheit und nachhaltiges Handeln.</p>
+                <p>Genau diese Werte übersetze ich in visuelle Botschaften.</p>
+                <p>Ein charakterstarkes Porträt transportiert Ihre Souveränität, zeigt Ihre menschliche Nahbarkeit und unterstreicht Ihren unternehmerischen Erfolg. So werden Sie als Vorbild wahrgenommen und schaffen echtes Vertrauen bei Mitarbeitenden, Partnern und Kunden.</p>
+                <p>Lassen Sie uns Ihre Haltung sichtbar machen und vereinbaren Sie ein unverbindliches Kennenlerngespräch.</p>
+
+                <a href="../contact/index.html" class="cta">
+                    <span>Kennenlerngespräch vereinbaren</span>
+                    <span class="cta__arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
         </section>
+
+        <!-- Nr. 1 – Adina Hotels (Bild 1, Text 1) -->
+        <article class="project p1">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/AK_.jpg" width="1200" height="800" alt="CEO Asli Kutlucan im blauen Samtblazer vor einer Glasfassade"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">Adina Hotels</h2>
+                <p>Porträtserie für die Adina Hotels: Für Website, Social Media und Publikationen habe ich Führungskräfte des Unternehmens fotografiert – darunter CEO Asli Kutlucan.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 2 – GSK Stockmann (Bild 3, Text 3) -->
+        <article class="project p2">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/MP_GSK.jpg" width="800" height="1200" alt="Schwarz-Weiß-Porträt der Managing Partner von GSK Stockmann vor einem Rundbogenfenster"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">GSK Stockmann</h2>
+                <p>Porträts der Managing Partner von GSK Stockmann, umgesetzt für den prägnanten Markenauftritt auf der Website sowie in Unternehmenspublikationen.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 3 – PMG Presse-Monitor (Bild 2, Text 2) -->
+        <article class="project p3">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/Natascha_T.jpg" width="1200" height="800" alt="Natascha Thomas in heller Kleidung vor hellgrauem Hintergrund"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">PMG Presse-Monitor</h2>
+                <p>Für PMG Presse-Monitor realisierte Porträts der Geschäftsführung, darunter Natascha Thomas. Die Aufnahmen kommen auf der Website sowie in verschiedenen Publikationen zum Einsatz.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 4 – weberbrunner architektur (Bild 4, 5, 6, Text 4) – drei gleich große Bilder -->
+        <article class="project p4">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/Roger_W.jpg" width="634" height="950" alt="Roger Weber sitzend auf einer Treppe"></figure>
+            <figure class="img-b reveal"><img src="../assets/executive-portraits/images/Boris_B.jpg" width="634" height="950" alt="Boris Brunner im dunklen T-Shirt vor einer Wand"></figure>
+            <figure class="img-c reveal"><img src="../assets/executive-portraits/images/Elise_P.jpg" width="634" height="950" alt="Elise Pischetsrieder sitzend auf einer Treppe"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">Weberbrunner Architektur</h2>
+                <p>Porträtserie für weberbrunner architektur (Zürich/Berlin): Fotografische Begleitung der Geschäftsführung (Roger Weber, Boris Brunner und Elise Pischetsrieder) für Social Media und Website – ergänzt anlässlich der Umfirmierung des Berliner Büros zu <em>weberbrunner pischetsrieder architektur</em>.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 5 – Anne Lampen Architekten (Bild 12, 13, Text 8) – zwei gleich große Bilder -->
+        <article class="project p5">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/Susann_B.jpg" width="633" height="950" alt="Susann Belitz im grünen Mantel auf einer herbstlichen Straße"></figure>
+            <figure class="img-b reveal"><img src="../assets/executive-portraits/images/Anne_L.jpg" width="633" height="950" alt="Anne Lampen im beigen Trenchcoat auf einer herbstlichen Straße"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">Anne Lampen Architekten</h2>
+                <p>Porträt- und Teamserie für Anne Lampen Architekten: Fotografische Begleitung der Geschäftsführerinnen Susann Belitz und Anne Lampen sowie des gesamten Teams. Die Aufnahmen wurden für den Webauftritt, Publikationen und Wettbewerbe umgesetzt.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 6 – Georg Neumann GmbH (Bild 11, Text 7) -->
+        <article class="project p6">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/Yasmine_R.jpg" width="861" height="1200" alt="Yasmine Riechers im schwarzen Oberteil vor dunklem Hintergrund"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">Georg Neumann GmbH</h2>
+                <p>Unternehmensporträts für die Georg Neumann GmbH: Aufnahmen von CEO Yasmine Riechers und allen Mitarbeitenden für Website, Social Media und interne Kommunikation.</p>
+            </div>
+        </article>
+
+        <!-- Nr. 7 – Cordula Heckmann (Bild 8, Text 6, darunter Bild 9 und 10) -->
+        <article class="project p7">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/CH.jpg" width="1200" height="800" alt="Cordula Heckmann lachend auf einem Ledersessel vor schwarzem Hintergrund"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">Cordula Heckmann</h2>
+                <p>Porträtserie von Cordula Heckmann, der ehemaligen Schulleiterin des Campus Rütli in Berlin. Die Aufnahmen wurden für die Nutzung in verschiedenen Publikationen realisiert.</p>
+            </div>
+            <figure class="img-b reveal"><img src="../assets/executive-portraits/images/CH_1.jpg" width="800" height="1200" alt="Cordula Heckmann beim Styling vor dem Shooting"></figure>
+            <figure class="img-c reveal"><img src="../assets/executive-portraits/images/CH_2.jpg" width="800" height="1200" alt="Cordula Heckmann im hellen Strickpullover vor schwarzem Hintergrund"></figure>
+        </article>
+
+        <!-- Nr. 8 – CMS Hasche Sigle (Bild 7, Text 5) -->
+        <article class="project p8">
+            <figure class="img-a reveal"><img src="../assets/executive-portraits/images/CMS_GF.jpg" width="1200" height="1090" alt="Drei Partner von CMS Hasche Sigle vor einer Holzlamellenwand"></figure>
+            <div class="project__text reveal">
+                <!-- Platzhalter-Überschrift -->
+                <h2 class="project__title">CMS Hasche Sigle</h2>
+                <p>Porträtserie für CMS Hasche Sigle: Aufnahmen der Partner zur Nutzung auf der Website und für Social Media.</p>
+            </div>
+        </article>
     </main>
 
     <footer class="site-footer">
@@ -39,5 +162,10 @@
             </a>
         </nav>
     </footer>
+
+    <!-- Scroll-Hinweis: erscheint, wenn eine Weile nicht gescrollt wird -->
+    <div class="scroll-hint" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
 </body>
 </html>
