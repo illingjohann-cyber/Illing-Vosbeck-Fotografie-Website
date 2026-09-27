@@ -277,3 +277,41 @@ if (contactForm) {
         if (wrapper) wrapper.classList.remove('is-invalid');
     });
 }
+
+// Bilder mit Projekt-Link: nicht nur der Popup-Button, sondern das ganze Bild ist klickbar
+document.querySelectorAll('.photo').forEach((figure) => {
+    const link = figure.querySelector('a.photo__button[href]');
+    const img = figure.querySelector('img');
+    if (!link || !img) return;
+
+    figure.classList.add('photo--linked');
+    img.addEventListener('click', () => {
+        try { sessionStorage.setItem('iv-internal', '1'); } catch (err) {}
+        window.location.href = link.href;
+    });
+});
+
+// Statischer Logo-Schriftzug (.name-mark): Unterzeile und Linie exakt auf Namensbreite bringen
+function fitNameMarks() {
+    document.querySelectorAll('.name-mark').forEach((mark) => {
+        const name = mark.querySelector('.name-mark__name');
+        const rule = mark.querySelector('.name-mark__rule');
+        const sub = mark.querySelector('.name-mark__sub');
+
+        sub.style.letterSpacing = '0px';
+        sub.style.marginRight = '0px';
+
+        const nameWidth = name.getBoundingClientRect().width - parseFloat(getComputedStyle(name).letterSpacing || 0);
+        const subWidth = sub.getBoundingClientRect().width;
+        const gaps = [...sub.textContent.trim()].length - 1;
+
+        mark.style.setProperty('--sub-spacing', `${(nameWidth - subWidth) / gaps}px`);
+        rule.style.width = `${nameWidth}px`;
+        sub.style.letterSpacing = '';
+        sub.style.marginRight = '';
+    });
+}
+
+if (document.querySelector('.name-mark')) {
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(fitNameMarks);
+}

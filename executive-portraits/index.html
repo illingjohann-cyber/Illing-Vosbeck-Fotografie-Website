@@ -21,8 +21,8 @@
             if (show) document.documentElement.classList.add('with-preloader');
         })();
     </script>
-    <link rel="stylesheet" href="../style.css?v=30">
-    <script src="../main.js?v=30" defer></script>
+    <link rel="stylesheet" href="../style.css?v=33">
+    <script src="../main.js?v=33" defer></script>
 </head>
 <body>
     <!-- Vorhang beim Laden: Logo baut sich auf (schwarz → gold), dann gleitet der Vorhang nach oben -->
@@ -48,7 +48,12 @@
     <main class="ep">
         <section class="page-intro ep-intro reveal">
             <h1 class="display-name">Porträts Führungskräfte</h1>
-            <p class="page-intro__label">Anke Illing · Porträtfotografie</p>
+            <!-- Logo-Schriftzug wie in der Start-Animation (Endzustand) -->
+            <div class="name-mark" role="img" aria-label="Anke Illing – Porträtfotografie">
+                <span class="name-mark__name" aria-hidden="true">Anke Illing</span>
+                <span class="name-mark__rule" aria-hidden="true"></span>
+                <span class="name-mark__sub" aria-hidden="true">Porträtfotografie</span>
+            </div>
 
             <!-- Text 0.1 -->
             <div class="ep-intro__text">
@@ -149,6 +154,13 @@
                 <p>Porträtserie für CMS Hasche Sigle: Aufnahmen der Partner zur Nutzung auf der Website und für Social Media.</p>
             </div>
         </article>
+
+        <div class="ep-back reveal">
+            <a href="../index.html" class="line-link">
+                <span class="line-link__line" aria-hidden="true"></span>
+                <span>Zurück zur Startseite</span>
+            </a>
+        </div>
     </main>
 
     <footer class="site-footer">

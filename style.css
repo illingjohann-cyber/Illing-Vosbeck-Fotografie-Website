@@ -889,7 +889,7 @@ button.cta {
 .p1 .project__text { grid-column: 9 / 12; grid-row: 1; margin-top: 48px; }
 
 /* Nr. 2 – Hochformat eingerückt, Text rechts unten bündig */
-.p2 .img-a        { grid-column: 3 / 6;  grid-row: 1; }
+.p2 .img-a        { grid-column: 2 / 6;  grid-row: 1; }
 .p2 .project__text { grid-column: 7 / 11; grid-row: 1; align-self: end; }
 
 /* Nr. 3 – Querformat rechts am Rand, Text links auf halber Höhe */
@@ -908,7 +908,7 @@ button.cta {
 .p5 .project__text { grid-column: 2 / 6;   grid-row: 1; align-self: end; }
 
 /* Nr. 6 – Hochformat mittig-links, Text rechts leicht abgesenkt */
-.p6 .img-a        { grid-column: 4 / 7;  grid-row: 1; }
+.p6 .img-a        { grid-column: 3 / 7;  grid-row: 1; }
 .p6 .project__text { grid-column: 8 / 12; grid-row: 1; margin-top: 120px; }
 
 /* Nr. 7 – Querformat links am Rand + Text, darunter zwei gleich große Hochformate */
@@ -922,7 +922,88 @@ button.cta {
 .p8 .project__text { grid-column: 1 / 5;  grid-row: 1; align-self: end; padding: 0 24px 0 6vw; }
 
 .p8 {
-    padding-bottom: 160px;
+    padding-bottom: 120px;
+}
+
+/* Logo-Schriftzug "ANKE ILLING / Linie / PORTRÄTFOTOGRAFIE" als statisches Element,
+   gleicher Aufbau wie in der Start-Animation (Name und Linie gold) */
+.name-mark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8px;
+    font-family: "IV Logo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.name-mark__name {
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-accent);
+}
+
+.name-mark__rule {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0.35em 0 0.45em;
+    background: var(--color-accent);
+}
+
+.name-mark__sub {
+    margin-right: calc(-1 * var(--sub-spacing, 0.42em));
+    font-size: 0.34em;
+    font-weight: 300;
+    letter-spacing: var(--sub-spacing, 0.42em);   /* per JS exakt auf Namensbreite */
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Zurück zur Startseite (Ende der Porträts-Seite) */
+.ep-back {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 120px;
+}
+
+/* Dezenter Linien-Link: kleine gesperrte Schrift, davor eine feine Linie,
+   die beim Hovern länger wird */
+.line-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    transition: color 0.4s ease;
+}
+
+.line-link__line {
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s ease;
+}
+
+.line-link:hover,
+.line-link:focus-visible {
+    color: var(--color-text);
+}
+
+.line-link:hover .line-link__line,
+.line-link:focus-visible .line-link__line {
+    width: 64px;
+    background: var(--color-accent);
+}
+
+/* Ganze Bilder mit Projekt-Link sind klickbar */
+.photo--linked img {
+    cursor: pointer;
 }
 
 /* ---------- Scroll-Hinweis (Startseite + Porträts Führungskräfte) ---------- */
